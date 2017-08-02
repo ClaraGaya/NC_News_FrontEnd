@@ -5,7 +5,7 @@ const initialState = {
     selectedTopic: null
 };
 
-function reducer(prevState = initialState, action) {
+function reducer (prevState = initialState, action) {
     if (!action) return prevState;
     const newState = Object.assign({}, prevState);
 
