@@ -7,7 +7,7 @@ import NewComment from './NewComment';
 import CommentList from './CommentList';
 
 class ArticlePage extends React.Component {
-    render() {
+    render () {
         return (
             <div>
                 <h1>Article</h1>

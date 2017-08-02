@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class App extends React.Component {
-    render() {
+    render () {
         return (
             <div>
                 <h3 className='title is-3'>All Articles</h3>

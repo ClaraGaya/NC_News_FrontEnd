@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 class ArticleText extends React.Component {
-    render() {
+    render () {
         return (
             <div>
                 <p>Yay!</p>

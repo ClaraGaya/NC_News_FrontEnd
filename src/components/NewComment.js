@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 class NewComment extends React.Component {
-    render() {
+    render () {
         return (
             <div>
                 <textarea className="newComment" id="newComment" cols="15" rows="4">
