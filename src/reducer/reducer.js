@@ -7,7 +7,7 @@ const initialState = {
     selectedTopic: null
 };
 
-function reducer(prevState = initialState, action) {
+function reducer (prevState = initialState, action) {
     if (!action) return prevState;
 
     if (action.type === types.FETCH_ARTICLES_REQUESTS) {
