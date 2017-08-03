@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import ArticleCard from './ArticleCard';
 import * as actions from '../actions/actions';
 
-
-  
   class ArticleList extends React.Component {
  
    componentDidMount () {
