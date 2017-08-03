@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class ArticleTitleBar extends React.Component {
     render () {
         return (
-            <h2>{this.props.title}</h2>
+            <h2 className="title is-3">{this.props.title}</h2>
         );
     }
 }

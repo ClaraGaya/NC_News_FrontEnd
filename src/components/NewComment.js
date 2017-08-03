@@ -19,20 +19,30 @@ class NewComment extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="newComment">
+                <hr />
+                <h3>Leave your comment below:</h3>
+                <br />
                 <form onSubmit={this.handleSubmit}>
-                    <fieldset>
-                        <label htmlFor="name-input">Name</label>
-                        <input type="text" id="name-input" onChange={this.handleChange.bind(null, 'name')} />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="comment-input">Comment</label>
-                        <input type="text" id="comment-input" onChange={this.handleChange.bind(null, 'comment')} />
-                    </fieldset>
+                    <div className="field name">
+                        <label className="label">Name</label>
+                        <div className="control">
+                            <input id="name-input" className="input" type="text" placeholder="Name" onChange={this.handleChange.bind(null, 'name')} />
+                        </div>
+                    </div>
+
+                    <div className="field comment">
+                        <label className="label">Comment</label>
+                        <div className="control">
+                            <input id="comment-input" className="input" type="text" placeholder="Comment" onChange={this.handleChange.bind(null, 'comment')} />
+                        </div>
+                    </div>
+
                     <button type="submit">
                         Submit
                      </button>
                 </form>
+                <hr />
             </div>
         );
     }

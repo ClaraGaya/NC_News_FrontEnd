@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 class VoteButton extends React.Component {
     render() {
         return (
-            <div>
-                <button>+</button>
-                <br />
-                {this.props.voteCount}
-                <br />
-                <button>-</button>
+            <div className="vote">
+                <span className="voteCount">
+                    {this.props.voteCount}
+                    <div className="voteButton">
+                        <button>Vote Up</button>
+                        <button>Vote Down</button>
+                    </div>
+                </span>
             </div>
         );
     }

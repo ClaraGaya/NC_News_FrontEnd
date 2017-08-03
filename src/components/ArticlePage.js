@@ -5,6 +5,7 @@ import ArticleText from './ArticleText';
 import VoteButton from './VoteButton';
 import NewComment from './NewComment';
 import CommentList from './CommentList';
+import Profile from './Profile';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
@@ -17,20 +18,16 @@ class ArticlePage extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Article</h1>
-                <div>
+            <div className="articlePage columns">
+                <div className="column is-three-quarters">
                     <ArticleTitleBar title={this.props.selectedArticle.title} />
                     <ArticleText body={this.props.selectedArticle.body} />
                     <VoteButton voteCount={this.props.selectedArticle.votes} />
-                </div>
-                <div>
                     <NewComment postComment={this.props.addCommentsByArticleID}
                         article_id={this.props.match.params.article_id} />
-                </div>
-                <div>
                     <CommentList selectedComments={this.props.selectedComments} />
                 </div>
+                <Profile />
             </div>
         );
     }

@@ -1,11 +1,12 @@
  import React from 'react';
  import PropTypes from 'prop-types';
+ import Navbar from './Navbar';
  
  class App extends React.Component {
     render () {
       return (
         <div>
-         <h3 className='title is-3'>Northcoders News</h3>
+         <Navbar />
           {this.props.children}
         </div>
       );
