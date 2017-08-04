@@ -7,10 +7,20 @@ class Profile extends React.Component {
                 <div className="profileWrap">
                     <img className="avatar" src="https://avatars3.githubusercontent.com/u/6791502?v=3&s=200" />
                     <div className="profileName">
-                        <h2 className="title is-4">User_Name</h2>
+                        <h2 className="title is-4">Awesome Northcoder</h2>
+                        <h3 className="subtitle is-6">northcoder</h3>
                     </div>
                 </div>
-                .<br />
+         Get the latest News here.<br />
+                <hr />
+                <form>
+                    <div className="search">
+                        <div className="control">
+                            <input id="search" className="input" type="text" placeholder="Search" />
+                        </div>
+                    </div>
+                </form>
+                <hr />
             </div>
         );
     }

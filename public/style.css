@@ -22,11 +22,11 @@
    flex-flow: row nowrap;
    justify-content: flex-start;
    align-items:flex-end;
-   background-color:#ddf;
    margin-bottom:20px;
    padding:0;
    height: 60px;
-   box-shadow: 1px 1px 5px #777;
+   box-shadow: 1px 1px 5px #000;
+   color:#FFF;
  }
  
  nav .topicLink {
@@ -35,17 +35,22 @@
    margin:0 5px;
    border-top-left-radius: 5px;
    border-top-right-radius: 5px;
+   box-shadow: -1px -1px 3px #000;
  }
  
  nav .topicLink:hover {
-   background-color: red;
+   background-color: rgba(200, 200, 255, 0.5);
+   box-shadow: inset 1px 1px 3px #000;
  }
  
  nav h1 {
    font-family: 'Zilla Slab', serif;
    margin: 20px 40px;
    align-self:center;
+   font-size:50px;
    line-height:60px;
+   color:#fff;
+   text-shadow: -1px -1px 3px #000;
  }
  
  .columns {
@@ -65,6 +70,11 @@
  h2, h3 {
    font-family: 'Zilla Slab', serif;
  }
+
+ #ArticleList .title:not(:last-child), #TopicPage .title:not(:last-child) {
+     margin-bottom:0;
+ }
+ 
  
  .topic {
    text-transform:capitalize;
@@ -84,7 +94,7 @@
    align-items:center;
  }
  
- .media-left:after, .vote:after {
+ .media-left:after {
    content: "";
    display: block;
    padding-bottom: 100%;
@@ -118,6 +128,18 @@
  .articlePage {
    font-size: 20px;
  }
+
+ .articleTitle {
+   margin-bottom:20px;
+ }
+ 
+ .voteAndComment {
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: flex-start;
+   align-items: flex-start;
+ }
+ 
  
  .vote {
    margin: 10px 0;
