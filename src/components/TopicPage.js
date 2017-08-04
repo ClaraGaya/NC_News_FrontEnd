@@ -14,14 +14,17 @@ class TopicPage extends React.Component {
         return (
             <div className="columns">
                 <div className="column is-three-quarters" id='TopicPage'>
-                    {this.props.articles.map(article => <ArticleCard
-                        title={article.title}
-                        author={article.created_by}
-                        votes={article.votes}
-                        key={article.title}
-                        topic={article.belongs_to}
-                        article_id={article._id}
-                    />)}
+                    {this.props.articles.filter(article => {
+                        return article.belongs_to === this.props.match.params.topic_id
+                    })
+                        .map(article => <ArticleCard
+                            title={article.title}
+                            author={article.created_by}
+                            votes={article.votes}
+                            key={article.title}
+                            topic={article.belongs_to}
+                            article_id={article._id}
+                        />)}
                 </div>
                 <Profile />
             </div>
