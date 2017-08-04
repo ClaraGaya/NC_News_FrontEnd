@@ -2,6 +2,12 @@ import * as types from './types';
 import axios from 'axios';
 import { ROOT } from '../../config';
 
+// tester!
+ export function hiGuys () {
+     console.log('Hello');
+ }
+ 
+
 export function fetchArticles() {
     return function (dispatch) {
         dispatch(fetchArticlesRequest());
@@ -145,3 +151,15 @@ export function addCommentsByArticleIDError(error) {
         payload: error
     };
 } 
+
+// incrementVotes
+ export function incrementVotes () {
+     console.log('voted up!');
+ // add 1 to voteCount
+ }
+ 
+ // decrementVotes
+ export function decrementVotes () {
+     console.log('voted down!');
+ // take 1 from voteCount
+  } 
