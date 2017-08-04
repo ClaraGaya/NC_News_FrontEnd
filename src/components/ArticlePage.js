@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
 class ArticlePage extends React.Component {
-
     componentDidMount() {
         this.props.fetchArticlesByID(this.props.match.params.article_id);
         this.props.fetchCommentsByArticleID(this.props.match.params.article_id);
@@ -20,17 +19,27 @@ class ArticlePage extends React.Component {
         return (
             <div className="articlePage columns">
                 <div className="column is-three-quarters">
-                    <ArticleTitleBar title={this.props.selectedArticle.title}
-                        author={this.props.selectedArticle.created_by} />
-                    <ArticleText body={this.props.selectedArticle.body} />
+                    <ArticleTitleBar
+                        title={this.props.selectedArticle.title}
+                        author={this.props.selectedArticle.created_by}
+                    />
+                    <ArticleText
+                        body={this.props.selectedArticle.body}
+                    />
                     <hr />
                     <div className="voteAndComment">
-                        <VoteButton voteCount={this.props.selectedArticle.votes} />
-                        <NewComment postComment={this.props.addCommentsByArticleID}
-                            article_id={this.props.match.params.article_id} />
+                        <VoteButton
+                            voteCount={this.props.selectedArticle.votes}
+                        />
+                        <NewComment
+                            postComment={this.props.addCommentsByArticleID}
+                            article_id={this.props.match.params.article_id}
+                        />
                     </div>
                     <hr />
-                    <CommentList selectedComments={this.props.selectedComments} />
+                    <CommentList
+                        selectedComments={this.props.selectedComments}
+                    />
                 </div>
                 <Profile />
             </div>
@@ -60,10 +69,11 @@ function MapStateToProps(state) {
     };
 }
 
-export default connect(MapStateToProps, mapDispatchToProps)(ArticlePage);
-
 ArticlePage.proptypes = {
     selectedArticle: PropTypes.object.isRequired,
     selectedComments: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired
-}; 
+
+};
+
+export default connect(MapStateToProps, mapDispatchToProps)(ArticlePage); 

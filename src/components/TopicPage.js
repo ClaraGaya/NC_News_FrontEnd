@@ -14,7 +14,8 @@ class TopicPage extends React.Component {
         return (
             <div className="columns">
                 <div className="column is-three-quarters" id='TopicPage'>
-                    {this.props.articles.map(article => <ArticleCard title={article.title}
+                    {this.props.articles.map(article => <ArticleCard
+                        title={article.title}
                         author={article.created_by}
                         votes={article.votes}
                         key={article.title}
@@ -46,6 +47,6 @@ function MapStateToProps(state) {
 TopicPage.proptypes = {
     fetchArticles: PropTypes.func.isRequired,
     articles: PropTypes.array.isRequired
- };
+};
 
 export default connect(MapStateToProps, mapDispatchToProps)(TopicPage); 
