@@ -30,6 +30,7 @@ class ArticlePage extends React.Component {
                     <div className="voteAndComment">
                         <VoteButton
                             voteCount={this.props.selectedArticle.votes}
+                            id={this.props.match.params.article_id}
                         />
                         <NewComment
                             postComment={this.props.addCommentsByArticleID}

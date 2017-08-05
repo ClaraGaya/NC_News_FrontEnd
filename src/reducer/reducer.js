@@ -101,6 +101,47 @@ function reducer(prevState = initialState, action) {
         return newState;
     }
 
+    // articleVoteUp
+    if (action.type === types.ARTICLE_VOTE_UP_REQUEST) {
+        const newState = Object.assign({}, prevState);
+        newState.loading = true;
+        return newState;
+    }
+
+    if (action.type === types.ARTICLE_VOTE_UP_SUCCESS) {
+        const newState = Object.assign({}, prevState);
+        newState.loading = false;
+        newState.voteCount = prevState.voteCount;
+        return newState;
+    }
+
+    if (action.type === types.ARTICLE_VOTE_UP_ERROR) {
+        const newState = Object.assign({}, prevState);
+        newState.error = action.error;
+        return newState;
+    }
+
+    // articleVoteDown
+    if (action.type === types.ARTICLE_VOTE_DOWN_REQUEST) {
+        const newState = Object.assign({}, prevState);
+        newState.loading = true;
+        return newState;
+    }
+
+    if (action.type === types.ARTICLE_VOTE_DOWN_SUCCESS) {
+        const newState = Object.assign({}, prevState);
+        newState.loading = false;
+        newState.voteCount = prevState.voteCount--;
+        return newState;
+    }
+
+    if (action.type === types.ARTICLE_VOTE_DOWN_ERROR) {
+        const newState = Object.assign({}, prevState);
+        newState.error = action.error;
+        return newState;
+    }
+
+
     return prevState;
 }
 
