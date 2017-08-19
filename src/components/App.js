@@ -7,7 +7,7 @@
       return (
         <div>
          <Navbar />
-          {this.props.children}
+         {this.props.children}
         </div>
       );
    }

@@ -6,75 +6,94 @@ import VoteButton from './VoteButton';
 import NewComment from './NewComment';
 import CommentList from './CommentList';
 import Profile from './Profile';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import * as actions from '../actions/actions';
+import '../../public/style.css';
 
 class ArticlePage extends React.Component {
-    componentDidMount() {
-        this.props.fetchArticlesByID(this.props.match.params.article_id);
-        this.props.fetchCommentsByArticleID(this.props.match.params.article_id);
+
+  componentDidMount () {
+    this.props.fetchArticlesByID(this.props.match.params.article_id);
+    this.props.fetchCommentsByArticleID(this.props.match.params.article_id);
+  }
+
+  render () {
+      
+    return (
+      <div className="articlePage columns">
+        <div className="column is-three-quarters">
+          {/* <ArticleTitleBar 
+            title={this.props.selectedArticle.article.title}
+            author={this.props.selectedArticle.article.created_by} 
+          /> */}
+          <RenderArticleTitleBar props={this.props}/>
+          <ArticleText 
+            body={this.props.selectedArticle.article} 
+          />
+          <hr />
+          <div className="voteAndComment">
+            <VoteButton 
+              votes={this.props.selectedArticle.votes} 
+              id={this.props.match.params.article_id}
+            />
+            <NewComment 
+              postComment={this.props.addCommentsByArticleID}
+              article_id={this.props.match.params.article_id} 
+            />
+          </div>
+          <hr />
+            <CommentList 
+              selectedComments={this.props.selectedComments} 
+            />               
+        </div>
+        <Profile />
+      </div>
+    );
+  }
+}
+
+function RenderArticleTitleBar (state) {
+    console.log('I LIKE WHAT YOU GOOOTT!! ' , state.props.selectedArticle.article)
+    if (state.loading) {
+        return (<Loading />)
+             } else {
+        return (<ArticleTitleBar 
+                title={state.props.selectedArticle.title} 
+                author={state.props.selectedArticle.created_by}
+            />)
+         }
+     }
+
+function mapDispatchToProps (dispatch) {
+  return {
+    fetchArticlesByID: (id) => {
+      dispatch(actions.fetchArticlesByID(id));
+    },
+    fetchCommentsByArticleID: (id) => {
+      dispatch(actions.fetchCommentsByArticleID(id));  
+    },
+    addCommentsByArticleID: (id, data) => {
+        dispatch(actions.addCommentsByArticleID(id, data));
     }
-
-    render() {
-        return (
-            <div className="articlePage columns">
-                <div className="column is-three-quarters">
-                    <ArticleTitleBar
-                        title={this.props.selectedArticle.title}
-                        author={this.props.selectedArticle.created_by}
-                    />
-                    <ArticleText
-                        body={this.props.selectedArticle.body}
-                    />
-                    <hr />
-                    <div className="voteAndComment">
-                        <VoteButton
-                            voteCount={this.props.selectedArticle.votes}
-                            id={this.props.match.params.article_id}
-                        />
-                        <NewComment
-                            postComment={this.props.addCommentsByArticleID}
-                            article_id={this.props.match.params.article_id}
-                        />
-                    </div>
-                    <hr />
-                    <CommentList
-                        selectedComments={this.props.selectedComments}
-                    />
-                </div>
-                <Profile />
-            </div>
-        );
-    }
+  };
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        fetchArticlesByID: (id) => {
-            dispatch(actions.fetchArticlesByID(id));
-        },
-        fetchCommentsByArticleID: (id) => {
-            dispatch(actions.fetchCommentsByArticleID(id));
-        },
-        addCommentsByArticleID: (id, data) => {
-            dispatch(actions.addCommentsByArticleID(id, data));
-        }
-    };
+function MapStateToProps (state) {
+  return {
+    selectedArticle: state.selectedArticle,
+    selectedComments: state.selectedComments,
+    loading: state.loading
+  };
 }
 
-function MapStateToProps(state) {
-    return {
-        selectedArticle: state.selectedArticle,
-        selectedComments: state.selectedComments,
-        loading: state.loading
-    };
-}
-
-ArticlePage.proptypes = {
+ArticlePage.propTypes = {
     selectedArticle: PropTypes.object.isRequired,
     selectedComments: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired
-
+    loading: PropTypes.bool.isRequired,
+    fetchArticlesByID: PropTypes.func.isRequired,
+    fetchCommentsByArticleID: PropTypes.func.isRequired,
+    addCommentsByArticleID: PropTypes.func.isRequired,
+    match: PropTypes.object.isRequired
 };
 
-export default connect(MapStateToProps, mapDispatchToProps)(ArticlePage); 
+export default connect(MapStateToProps, mapDispatchToProps) (ArticlePage);
