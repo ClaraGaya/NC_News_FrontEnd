@@ -18,22 +18,23 @@ class ArticlePage extends React.Component {
   }
 
   render () {
-      
-    return (
+          if (!this.props.selectedArticle) {
+            return (<p>loading</p>)
+        }
+          else return (
       <div className="articlePage columns">
         <div className="column is-three-quarters">
-          {/* <ArticleTitleBar 
+           <ArticleTitleBar 
             title={this.props.selectedArticle.article.title}
             author={this.props.selectedArticle.article.created_by} 
-          /> */}
-          <RenderArticleTitleBar props={this.props}/>
+          /> 
           <ArticleText 
-            body={this.props.selectedArticle.article} 
+            body={this.props.selectedArticle.article.body} 
           />
           <hr />
           <div className="voteAndComment">
             <VoteButton 
-              votes={this.props.selectedArticle.votes} 
+              votes={this.props.selectedArticle.article.votes} 
               id={this.props.match.params.article_id}
             />
             <NewComment 
@@ -52,17 +53,17 @@ class ArticlePage extends React.Component {
   }
 }
 
-function RenderArticleTitleBar (state) {
-    console.log('I LIKE WHAT YOU GOOOTT!! ' , state.props.selectedArticle.article)
-    if (state.loading) {
-        return (<Loading />)
-             } else {
-        return (<ArticleTitleBar 
-                title={state.props.selectedArticle.title} 
-                author={state.props.selectedArticle.created_by}
-            />)
-         }
-     }
+// function RenderArticleTitleBar (state) {
+//     console.log('I LIKE WHAT YOU GOOOTT!! ' , state.props.selectedArticle.article)
+//     if (state.loading) {
+//         return (<Loading />)
+//              } else {
+//         return (<ArticleTitleBar 
+//                 title={state.props.selectedArticle.title} 
+//                 author={state.props.selectedArticle.created_by}
+//             />)
+//          }
+//      }
 
 function mapDispatchToProps (dispatch) {
   return {
@@ -87,7 +88,7 @@ function MapStateToProps (state) {
 }
 
 ArticlePage.propTypes = {
-    selectedArticle: PropTypes.object.isRequired,
+    selectedArticle: PropTypes.object,
     selectedComments: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     fetchArticlesByID: PropTypes.func.isRequired,

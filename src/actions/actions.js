@@ -112,15 +112,18 @@ export function fetchCommentsByArticleIDError (error) {
 
 // addCommentsByArticleID
 export function addCommentsByArticleID (id, data) {
+    console.log(id , data)
     return function (dispatch) {
-        dispatch(addCommentsByArticleIDPost(id, data));
-        axios.post(`${ROOT}/articles/${id}/comments`, data)
+        // dispatch(addCommentsByArticleIDPost(id, data));
+        let url = `${ROOT}/articles/${id}/comments`;
+        console.log(url)
+        axios.post(url, data)
         .then(res => {
             console.log('Article res: ', res);
             dispatch(addCommentsByArticleIDSuccess(res.data.comments));
         })
         .catch(err => {
-            console.log(err);
+            console.log('**** ' , err);
             dispatch(addCommentsByArticleIDError(err));
         });
     };

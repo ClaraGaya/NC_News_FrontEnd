@@ -2,7 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   articles: [],
-  selectedArticle: {},
+  selectedArticle: null,
   selectedComments: [],
   loading: false,
   error: null,

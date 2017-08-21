@@ -8,7 +8,7 @@ class NewComment extends React.Component {
     super(props);
     this.state = {
       comment: {
-      value: "",
+      value: '',
       touched: false
       }
     };
@@ -43,7 +43,9 @@ class NewComment extends React.Component {
         touched: true
       }
     });
-    this.setState(Object.assign(newState));
+    this.setState(newState, function () {
+      console.log('***** ' , this.state)
+    });
   }
 
   handleSubmit (event) {
