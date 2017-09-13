@@ -2,7 +2,7 @@
   "name": "northcoders-news",
   "version": "1.0.0",
   "description": "A Reddit clone using React and Redux",
-  "homepage": "https://dentednerd.github.io/NCNews",
+  "homepage": "https://github.com/jonsey247/NC_News_FrontEnd",
   "engines": {
     "node": "8.2.1"
   },
