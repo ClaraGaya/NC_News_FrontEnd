@@ -43,9 +43,7 @@ class NewComment extends React.Component {
         touched: true
       }
     });
-    this.setState(newState, function () {
-      console.log('***** ' , this.state)
-    });
+    this.setState(Object.assign(newState));
   }
 
   handleSubmit (event) {

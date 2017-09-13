@@ -11,30 +11,26 @@ import * as actions from '../actions/actions';
 import '../../public/style.css';
 
 class ArticlePage extends React.Component {
-
   componentDidMount () {
     this.props.fetchArticlesByID(this.props.match.params.article_id);
     this.props.fetchCommentsByArticleID(this.props.match.params.article_id);
   }
 
   render () {
-          if (!this.props.selectedArticle) {
-            return (<p>loading</p>)
-        }
-          else return (
+    return (
       <div className="articlePage columns">
         <div className="column is-three-quarters">
-           <ArticleTitleBar 
-            title={this.props.selectedArticle.article.title}
-            author={this.props.selectedArticle.article.created_by} 
-          /> 
+          <ArticleTitleBar 
+            title={this.props.selectedArticle.title}
+            author={this.props.selectedArticle.created_by} 
+          />
           <ArticleText 
-            body={this.props.selectedArticle.article.body} 
+            body={this.props.selectedArticle.body} 
           />
           <hr />
           <div className="voteAndComment">
             <VoteButton 
-              votes={this.props.selectedArticle.article.votes} 
+              votes={this.props.selectedArticle.votes} 
               id={this.props.match.params.article_id}
             />
             <NewComment 
@@ -52,18 +48,6 @@ class ArticlePage extends React.Component {
     );
   }
 }
-
-// function RenderArticleTitleBar (state) {
-//     console.log('I LIKE WHAT YOU GOOOTT!! ' , state.props.selectedArticle.article)
-//     if (state.loading) {
-//         return (<Loading />)
-//              } else {
-//         return (<ArticleTitleBar 
-//                 title={state.props.selectedArticle.title} 
-//                 author={state.props.selectedArticle.created_by}
-//             />)
-//          }
-//      }
 
 function mapDispatchToProps (dispatch) {
   return {
@@ -88,7 +72,7 @@ function MapStateToProps (state) {
 }
 
 ArticlePage.propTypes = {
-    selectedArticle: PropTypes.object,
+    selectedArticle: PropTypes.object.isRequired,
     selectedComments: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     fetchArticlesByID: PropTypes.func.isRequired,
