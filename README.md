@@ -8,7 +8,7 @@ A Reddit clone built in Mongo, Express, React, Redux and Bulma.
 After cloning this repo please take the following steps.
 1. Open a terminal.
 2. In the terminal, run `npm install`.
-3. After install is compleate then type into the terminal, `npm run start`.
+3. After install is complete then type into the terminal, `npm run start`.
 6. The front-end is now accessible on port 9090.
 
 ---
